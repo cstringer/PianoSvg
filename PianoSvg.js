@@ -46,7 +46,7 @@ var PianoSvg = (function($) {
    * Init
    */
   Piano.init = function(config) {
-		config = config  || Piano.config;
+    config = config  || Piano.config;
     var pContainer = document.getElementById("pianoContainer"),
         pElem,
         octNdx,
@@ -64,18 +64,18 @@ var PianoSvg = (function($) {
 
     // create SVG element
     pElem = document.createElementNS(config.key.elemNS, 'svg');
-    pElem.setAttribute('id',			config.pianoId);
-    pElem.setAttribute('width',		'100%');
-    pElem.setAttribute('height',	config.keysWhite.height);
+    pElem.setAttribute('id',      config.pianoId);
+    pElem.setAttribute('width',    '100%');
+    pElem.setAttribute('height',  config.keysWhite.height);
 
     for (octNdx = 0; octNdx < config.octaves; octNdx++) {
       // add white keys
       for (kwi = 0; kwi < config.keysWhite.names.length; kwi++) {
         kElem = createKey({
-          id:			config.keysWhite.names[kwi] + octNdx,
-          class:	config.key.class + " " + config.keysWhite.class,
-          width:	config.keysWhite.width,
-          height:	config.keysWhite.height,
+          id:      config.keysWhite.names[kwi] + octNdx,
+          class:  config.key.class + " " + config.keysWhite.class,
+          width:  config.keysWhite.width,
+          height:  config.keysWhite.height,
           spacing:(config.keysWhite.spacing * kwi) + (octNdx * octWidth)
         });
         pElem.appendChild(kElem);
@@ -84,10 +84,10 @@ var PianoSvg = (function($) {
       // add black keys
       for (kbi = 0; kbi < config.keysBlack.names.length; kbi++) {
         kElem = createKey({
-          id:			config.keysBlack.names[kbi] + octNdx,
-          class:	config.key.class + " " + config.keysBlack.class,
-          width:	config.keysBlack.width,
-          height:	config.keysBlack.height,
+          id:      config.keysBlack.names[kbi] + octNdx,
+          class:  config.key.class + " " + config.keysBlack.class,
+          width:  config.keysBlack.width,
+          height:  config.keysBlack.height,
           spacing:config.keysBlack.spacing[kbi] + (octNdx * octWidth)
         });
         pElem.appendChild(kElem);
@@ -103,17 +103,17 @@ var PianoSvg = (function($) {
     return Piano;
   }
 
-	/*
-	 * Create a piano key with the given properties
-	 */
+  /*
+   * Create a piano key with the given properties
+   */
   function createKey(key) {
     var kElem = document.createElementNS(Piano.config.key.elemNS, Piano.config.key.elemType);
-    kElem.setAttribute('id', 			key.id);
-    kElem.setAttribute('class', 	key.class);
-    kElem.setAttribute('x',				key.spacing);
-    kElem.setAttribute('y', 			0);
-    kElem.setAttribute('height',	key.height);
-    kElem.setAttribute('width', 	key.width);
+    kElem.setAttribute('id',       key.id);
+    kElem.setAttribute('class',   key.class);
+    kElem.setAttribute('x',        key.spacing);
+    kElem.setAttribute('y',       0);
+    kElem.setAttribute('height',  key.height);
+    kElem.setAttribute('width',   key.width);
     return kElem;
   }
 
